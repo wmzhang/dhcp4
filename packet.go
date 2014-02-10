@@ -62,6 +62,11 @@ func (p Packet) SetCHAddr(a net.HardwareAddr) {
 	copy(p[28:44], a)
 	p[2] = byte(len(a))
 }
+
+func (p Packet) SetFileName(filename []byte) {
+	copy(p[108:172], filename)
+}
+
 func (p Packet) SetHType(hType byte)     { p[1] = hType }
 func (p Packet) SetCookie(cookie []byte) { copy(p.Cookie(), cookie) }
 func (p Packet) SetXId(xId []byte)       { copy(p.XId(), xId) }
